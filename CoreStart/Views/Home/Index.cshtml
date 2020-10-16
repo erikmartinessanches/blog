@@ -5,8 +5,9 @@
 @{
     ViewBag.Title = "Blog title";
 }
+<main class="container-sm">
 <h1>Blog post entry screen</h1>
-<form asp-action="Index" method="post">
+<form asp-action="Index" method="post" class="form-">
     <div asp-validation-summary="All"></div>
     <div>
         <label asp-for="Post">Enter blog post content:</label>
@@ -27,3 +28,4 @@
     <button type="submit">Save blog post</button>
     <a asp-action="Index">Clear</a>
 </form>
+</main>
