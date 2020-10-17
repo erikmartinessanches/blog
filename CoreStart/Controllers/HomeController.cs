@@ -25,11 +25,15 @@ namespace CoreStart.Controllers
         {
             if (ModelState.IsValid) //ModelState is a property on the Controller class.
             {
-                ViewBag.BlogPost = model.Post;
+                ViewBag.BlogPost = model.Post + " Written by " + model.Author + " on " + model.Time.ToString() +".";
+                //ViewBag.Author = model.Author;
+                //ViewBag.Time = model.Time;
             }
             else
             {
-                ViewBag.BlogPost = "";
+                //ViewBag.BlogPost = "";
+
+                
             }
             
             return View(model);

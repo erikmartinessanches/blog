@@ -105,7 +105,7 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./clie
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_custom_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/custom.scss */ \"./client/css/custom.scss\");\n/* harmony import */ var _css_custom_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_custom_scss__WEBPACK_IMPORTED_MODULE_0__);\n﻿\r\n\r\n\r\n//TODO: Import bootstrap here. See https://getbootstrap.com/docs/4.5/getting-started/javascript/#individual-or-compiled\r\n\r\n\r\nconsole.log(\"Hello, you cruel front-end world.\");\n\n//# sourceURL=webpack:///./client/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_custom_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/custom.scss */ \"./client/css/custom.scss\");\n/* harmony import */ var _css_custom_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_custom_scss__WEBPACK_IMPORTED_MODULE_0__);\n﻿\n\n\n//TODO: Import bootstrap here. See https://getbootstrap.com/docs/4.5/getting-started/javascript/#individual-or-compiled\n\n\nconsole.log(\"Hello, cruel front-end world.\");\n\n//# sourceURL=webpack:///./client/js/index.js?");
 
 /***/ })
 
