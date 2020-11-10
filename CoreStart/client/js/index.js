@@ -1,5 +1,5 @@
-﻿import "../css/custom.scss";
-import 'bootstrap';
+﻿import 'bootstrap';
+import "../css/custom.scss";
 
 //TODO: Import bootstrap here. See https://getbootstrap.com/docs/4.5/getting-started/javascript/#individual-or-compiled
 

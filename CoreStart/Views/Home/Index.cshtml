@@ -11,24 +11,23 @@
 <form asp-action="Index" method="post">
 
     <div asp-validation-summary="All"></div>
-    <div>
+    <div class="form-group">
         <label asp-for="Post">Enter blog post content:</label>
-        <textarea asp-for="Post"></textarea>
+        <textarea asp-for="Post" class="form-control" rows="3"></textarea>
     </div>
-    <div>
+    <div class="form-group">
         <label asp-for="Author">Author:</label>
-        <input asp-for="Author" />
+        <input asp-for="Author" class="form-control"/>
     </div>
-    <div>
+    <div class="form-group">
         <label asp-for="Time">Post time:</label>
-        <input type="datetime-local" asp-for="Time" />
+        <input type="datetime-local" asp-for="Time" class="form-control"/>
     </div>
-    <div>
+    <div class="form-group">
         <label>Written blog post:</label>
-        <textarea readonly>@ViewBag.BlogPost</textarea>
+        <textarea readonly class="form-control">@ViewBag.BlogPost</textarea>
     </div>
     <button type="submit" class="btn btn-primary">Save blog post</button>
-
-    <a asp-action="Index">Clear</a>
+    <a asp-action="Index" class="btn btn-secondary">Clear</a>
 </form>
 </main>
