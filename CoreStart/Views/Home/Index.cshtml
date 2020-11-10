@@ -13,21 +13,22 @@
     <div asp-validation-summary="All"></div>
     <div>
         <label asp-for="Post">Enter blog post content:</label>
-        <textarea asp-for="Post" ></textarea>
+        <textarea asp-for="Post"></textarea>
     </div>
     <div>
         <label asp-for="Author">Author:</label>
-        <input asp-for="Author"/>
+        <input asp-for="Author" />
     </div>
     <div>
         <label asp-for="Time">Post time:</label>
-        <input type="datetime-local" asp-for="Time"/>
+        <input type="datetime-local" asp-for="Time" />
     </div>
     <div>
         <label>Written blog post:</label>
         <textarea readonly>@ViewBag.BlogPost</textarea>
     </div>
-    <button type="submit">Save blog post</button>
+    <button type="submit" class="btn btn-primary">Save blog post</button>
+
     <a asp-action="Index">Clear</a>
 </form>
 </main>
