@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,6 +15,7 @@ namespace CoreStart
 {
     public class Startup
     {
+        private string _connection = null;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,6 +27,12 @@ namespace CoreStart
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            //var builder = new SqlConnectionStringBuilder(
+            //    Configuration.GetConnectionString("BlogPostContext"));
+            //builder.Clear();
+            //builder.Add("BlogContext", Configuration["BlogContextConnectionString"]);
+            //_connection = builder.ConnectionString;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
