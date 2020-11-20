@@ -26,24 +26,5 @@ namespace CoreStart.Controllers
              *ViewResult is a type of IActionResult. */
             return View(blogposts);
         }
-
-        [HttpPost]
-        public IActionResult Index(BlogPost model)
-        {
-            if (ModelState.IsValid) //ModelState is a property on the Controller class.
-            {
-                
-                //ViewBag.Author = model.Author;
-                //ViewBag.Time = model.Time;
-            }
-            else
-            {
-                //ViewBag.BlogPost = "";
-
-                
-            }
-            
-            return View(model);
-        }
     }
 }

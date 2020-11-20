@@ -13,10 +13,11 @@
 </div>
 <h2>Confirm deletion of</h2>
 <h3>@Model.Author @Model.Time</h3>
-    <form asp-action="Delete" method="post">
+<form asp-action="Delete" method="post">
 
-        <input type="hidden" asp-for="BlogPostId" />
+    <input type="hidden" asp-for="BlogPostId" />
 
-        <button type="submit" class="btn btn-primary">Delete</button>
-        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Cancel</a>
-    </form>
+    <button type="submit" class="btn btn-primary">Delete</button>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+</main>
