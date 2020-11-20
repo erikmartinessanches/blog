@@ -21,14 +21,16 @@ namespace CoreStart.Controllers
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
-            return View("Edit", new BlogPost());
+            return View("Edit",new BlogPost());
         }
 
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            ViewBag.Action = "Edit";
+            //ViewBag.Action = "Edit";
+
             var blogpost = await context.BlogPosts.FindAsync(id);
+            ViewBag.Action = (blogpost.BlogPostId == 0) ? "Add" : "Edit";
             return View(blogpost);
         }
 
@@ -51,7 +53,7 @@ namespace CoreStart.Controllers
             }
             else
             {
-                ViewBag.Action = (blogpost.BlogPostId == 0) ? "Add" : "Edit";
+                //ViewBag.Action = (blogpost.BlogPostId == 0) ? "Add" : "Edit";
                 return View(blogpost);
             }
         }
@@ -59,6 +61,7 @@ namespace CoreStart.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
+            ViewBag.Action = "Delete";
             var blogpost = await context.BlogPosts.FindAsync(id);
             return View(blogpost);
         }
