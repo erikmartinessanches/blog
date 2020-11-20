@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CoreStart.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoreStart.Controllers
 {
@@ -19,9 +20,9 @@ namespace CoreStart.Controllers
         /*Specifying IActionResult interface as the return type allows us to return any type of
          action result, for example a ViewResult.*/
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var blogposts = context.BlogPosts.OrderBy(m => m.Author).ToList();
+            var blogposts = await context.BlogPosts.OrderByDescending(m => m.Time).ToListAsync();
             /*Returns a ViewResult object for the view associated with the action method.
              *ViewResult is a type of IActionResult. */
             return View(blogposts);

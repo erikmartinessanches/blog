@@ -25,28 +25,28 @@ namespace CoreStart.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
             ViewBag.Action = "Edit";
-            var blogpost = context.BlogPosts.Find(id);
+            var blogpost = await context.BlogPosts.FindAsync(id);
             return View(blogpost);
         }
 
         [HttpPost]
-        public IActionResult Edit(BlogPost blogpost)
+        public async Task<IActionResult> Edit(BlogPost blogpost)
         {
             if (ModelState.IsValid)
             {
                 if (blogpost.BlogPostId == 0)
                 {
-                    context.BlogPosts.Add(blogpost);
+                    await context.BlogPosts.AddAsync(blogpost);
                 }
                 else
                 {
                     context.BlogPosts.Update(blogpost);
                 }
 
-                context.SaveChanges();
+                await context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -57,17 +57,17 @@ namespace CoreStart.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var blogpost = context.BlogPosts.Find(id);
+            var blogpost = await context.BlogPosts.FindAsync(id);
             return View(blogpost);
         }
 
         [HttpPost]
-        public IActionResult Delete(BlogPost blogpost)
+        public async Task<IActionResult> Delete(BlogPost blogpost)
         {
             context.BlogPosts.Remove(blogpost);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
         }
     }
