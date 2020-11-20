@@ -14,6 +14,5 @@ namespace CoreStart.Models
         public string Author { get; set; } //Strings are nullable by default.
         [Required(ErrorMessage = "Please pick a date and a time.")]
         public DateTime? Time { get; set; } //Required attributes must be nullable.
-
     }
 }

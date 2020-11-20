@@ -9,6 +9,6 @@ namespace CoreStart.Models
     public class BlogContext : DbContext
     {
         public BlogContext(DbContextOptions<BlogContext> options):base(options){}
-        public DbSet<BlogContext> BlogPosts { get; set; }
+        public DbSet<BlogPost> BlogPosts { get; set; }
     }
 }

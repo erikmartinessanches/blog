@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using CoreStart.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -18,6 +20,8 @@ namespace CoreStart
         private string _connection = null;
         public Startup(IConfiguration configuration)
         {
+            /* Configuration is injected and we can use it to
+             * read config data such as connection strings. */
             Configuration = configuration;
         }
 
@@ -33,6 +37,13 @@ namespace CoreStart
             //builder.Clear();
             //builder.Add("BlogContext", Configuration["BlogContextConnectionString"]);
             //_connection = builder.ConnectionString;
+
+            /*Enables injection of DbContext into the constructor. I pass a lambda expression
+             that creates a DbContextOptions object. In turn, this object is passed to DbContext's
+             constructor to provide info about the database. The framework automatically creates
+             and passes a DbContext object to any controller that has a DbContext parameter.*/
+            services.AddDbContext<BlogContext>(options => options.UseSqlServer(
+                Configuration.GetConnectionString("BlogContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
