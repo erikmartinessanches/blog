@@ -1,0 +1,22 @@
+﻿@model BlogPost
+@{
+    ViewBag.Title = "Delete blog post";
+}
+
+<main class="container-sm">
+<div class="jumbotron jumbotron-fluid">
+    <div class="container p-0">
+        <img id="photo" alt="Banner photo" src="~/images/iStock-1281363470.jpg" class="img-fluid rounded"/>
+        <h1 class="display-4">@ViewBag.Title</h1>
+        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    </div>
+</div>
+<h2>Confirm deletion of</h2>
+<h3>@Model.Author @Model.Time</h3>
+    <form asp-action="Delete" method="post">
+
+        <input type="hidden" asp-for="BlogPostId" />
+
+        <button type="submit" class="btn btn-primary">Delete</button>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>

@@ -1,0 +1,36 @@
+﻿@model BlogPost
+@{
+    string title = ViewBag.Action + " blog post";
+    ViewBag.Title = title;
+}
+
+
+<main class="container-sm">
+<div class="jumbotron jumbotron-fluid">
+    <div class="container p-0">
+        <img id="photo" alt="Banner photo" src="~/images/iStock-1281363470.jpg" class="img-fluid rounded" />
+        <h1 class="display-4">@ViewBag.Title</h1>
+        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    </div>
+</div>
+<form asp-action="Edit" method="post">
+
+    <div asp-validation-summary="All"></div>
+    <div class="form-group">
+        <label asp-for="Post">Enter blog post content:</label>
+        <textarea asp-for="Post" class="form-control" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="Author">Author:</label>
+        <input asp-for="Author" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="Time">Post time:</label>
+        <input type="datetime-local" asp-for="Time" class="form-control"/>
+    </div>
+
+    <input type="hidden" asp-for="BlogPostId"/>
+
+    <button type="submit" class="btn btn-primary">@ViewBag.Action</button>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

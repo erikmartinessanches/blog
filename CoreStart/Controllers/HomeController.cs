@@ -9,15 +9,22 @@ namespace CoreStart.Controllers
 {
     public class HomeController : Controller
     {
+        private BlogContext context { get; set; }
+
+        public HomeController(BlogContext ctx)
+        {
+            this.context = ctx;
+        }
+
         /*Specifying IActionResult interface as the return type allows us to return any type of
          action result, for example a ViewResult.*/
         [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.FV = 0;
+            var blogposts = context.BlogPosts.OrderBy(m => m.Author).ToList();
             /*Returns a ViewResult object for the view associated with the action method.
              *ViewResult is a type of IActionResult. */
-            return View(); 
+            return View(blogposts);
         }
 
         [HttpPost]
@@ -25,7 +32,7 @@ namespace CoreStart.Controllers
         {
             if (ModelState.IsValid) //ModelState is a property on the Controller class.
             {
-                ViewBag.BlogPost = model.Post + " Written by " + model.Author + " on " + model.Time.ToString() +".";
+                
                 //ViewBag.Author = model.Author;
                 //ViewBag.Time = model.Time;
             }
