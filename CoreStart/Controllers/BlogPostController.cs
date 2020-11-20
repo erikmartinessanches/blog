@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using CoreStart.Models;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.View;
 
 namespace CoreStart.Controllers
 {
@@ -47,15 +43,12 @@ namespace CoreStart.Controllers
                 {
                     context.BlogPosts.Update(blogpost);
                 }
-
                 await context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
             }
-            else
-            {
-                //ViewBag.Action = (blogpost.BlogPostId == 0) ? "Add" : "Edit";
-                return View(blogpost);
-            }
+
+            ViewBag.Action = (blogpost.BlogPostId == 0) ? "Add" : "Edit";
+            return View(blogpost);
         }
 
         [HttpGet]
