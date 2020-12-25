@@ -43,7 +43,7 @@ namespace CoreStart
              constructor to provide info about the database. The framework automatically creates
              and passes a DbContext object to any controller that has a DbContext parameter.*/
             services.AddDbContext<BlogContext>(options => options.UseSqlServer(
-                Configuration.GetConnectionString("BlogContext")));
+                Configuration.GetConnectionString("BlogContextConnectionString")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,7 +54,7 @@ namespace CoreStart
                 //Allows the right currency symbol during development on a local Linux container.
                 //Investigate how to localize in production.
                 //CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("sv-SE");
-                
+
                 app.UseDeveloperExceptionPage();
             }
             else
