@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using CoreStart.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoreStart.Controllers
 {
@@ -14,19 +16,19 @@ namespace CoreStart.Controllers
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public async Task<IActionResult> Add()
         {
             ViewBag.Action = "Add";
-            return View("Edit",new BlogPost());
+            ViewBag.Categories = await context.Categories.OrderBy(c => c.Name).ToListAsync();
+            return View("Edit", new BlogPost());
         }
 
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            //ViewBag.Action = "Edit";
-
             var blogpost = await context.BlogPosts.FindAsync(id);
             ViewBag.Action = (blogpost.BlogPostId == 0) ? "Add" : "Edit";
+            ViewBag.Categories = await context.Categories.OrderBy(c => c.Name).ToListAsync();
             return View(blogpost);
         }
 
@@ -46,9 +48,14 @@ namespace CoreStart.Controllers
                 await context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
             }
+            else
+            {
+                ViewBag.Action = (blogpost.BlogPostId == 0) ? "Add" : "Edit";
+                ViewBag.Categories = await context.Categories.OrderBy(c => c.Name).ToListAsync();
+                return View(blogpost);
+            }
 
-            ViewBag.Action = (blogpost.BlogPostId == 0) ? "Add" : "Edit";
-            return View(blogpost);
+
         }
 
         [HttpGet]

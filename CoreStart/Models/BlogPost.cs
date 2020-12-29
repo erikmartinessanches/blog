@@ -9,7 +9,16 @@ namespace CoreStart.Models
     public class BlogPost
     {
         public int BlogPostId { get; set; }
+        //[Required(ErrorMessage = "Please enter a title.")]
+        //public string Title { get; set; }
         public string Post { get; set; }
+        [Required(ErrorMessage = "Please enter a category.")]
+        /**The next two lines make Category.CategoryId a foreign key. Perhaps not ideal for
+         * CategoryId to be of type string but it will illustrate that the DB won't generate
+         * values for it, I suppose we'll have to do it.
+         */
+        public string CategoryId { get; set; }
+        public Category Category { get; set; }
         [Required(ErrorMessage = "Please enter an author.")]
         public string Author { get; set; } //Strings are nullable by default.
         [Required(ErrorMessage = "Please pick a date and a time.")]
