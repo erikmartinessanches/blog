@@ -29,27 +29,27 @@ namespace CoreStart.Models
                     Author = "Erik Martines Sanches",
                     BlogPostId = 1,
                     CategoryId = "P",
-                    Post = "My programming post.",
-                    Time = DateTime.Now
-                    //Title = "First blog post."
+                    Post = "My programming post, hi world.",
+                    Time = DateTime.Now,
+                    Title = "A programming post"
                 },
                 new BlogPost
                 {
                     Author = "Erik Martines Sanches",
                     BlogPostId = 2,
                     CategoryId = "S",
-                    Post = "My sports post.",
-                    Time = DateTime.Now
-                    //Title = "First blog post."
+                    Post = "My sports post, hi world.",
+                    Time = DateTime.Now,
+                    Title = "A sports post"
                 },
                 new BlogPost
                 {
                     Author = "Erik Martines Sanches",
                     BlogPostId = 3,
                     CategoryId = "M",
-                    Post = "My music post.",
-                    Time = DateTime.Now
-                    //Title = "First blog post."
+                    Post = "My music post, hi world.",
+                    Time = DateTime.Now,
+                    Title = "A music post"
                 });
         }
 

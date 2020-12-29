@@ -19,6 +19,7 @@
     <table class="table table-striped table-bordered table-hover mt-4">
         <thead>
             <tr>
+                <th>Title</th>
                 <th>Author</th>
                 <th>Category</th>
                 <th>Posted on</th>
@@ -29,12 +30,14 @@
             @foreach (var blogpost in Model)
             {
                 <tr>
+                    <td><a asp-controller="BlogPost" asp-action="View" asp-route-id="@blogpost.BlogPostId">@blogpost.Title</a></td>
                     <td>@blogpost.Author</td>
                     <td>@blogpost.Category.Name</td>
                     <td>@blogpost.Time</td>
                     <td>
-                        <a asp-controller="BlogPost" asp-action="Edit" asp-route-id="@blogpost.BlogPostId">Edit</a>
-                        <a asp-controller="BlogPost" asp-action="Delete" asp-route-id="@blogpost.BlogPostId">Delete</a>
+                        <a asp-controller="BlogPost" asp-action="Edit" asp-route-id="@blogpost.BlogPostId" asp-route-slug="@blogpost.Slug">Edit</a>
+                        <a asp-controller="BlogPost" asp-action="Delete" asp-route-id="@blogpost.BlogPostId" asp-route-slug="@blogpost.Slug">Delete</a>
+                        <a asp-controller="BlogPost" asp-action="Delete" asp-route-id="@blogpost.BlogPostId" asp-route-slug="@blogpost.Slug">Delete</a>
                     </td>
                 </tr>
             }

@@ -16,6 +16,12 @@
     <form asp-action="Edit" method="post">
 
         <div asp-validation-summary="All"></div>
+
+        <div class="form-group">
+            <label asp-for="Title">Enter blog post content</label>
+            <input asp-for="Title" class="form-control" />
+        </div>
+
         <div class="form-group">
             <label asp-for="Post">Enter blog post content</label>
             <textarea asp-for="Post" class="form-control" rows="3"></textarea>
