@@ -72,7 +72,7 @@ namespace CoreStart
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseRouting();
+            app.UseRouting(); //Selects the endpoint for the route if one is found.
 
             //app.UseAuthorization();
 
@@ -81,7 +81,7 @@ namespace CoreStart
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}/{slug?}");
-            });
+            }); //Executes the endpoint selected by routing.
         }
     }
 }

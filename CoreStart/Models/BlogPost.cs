@@ -30,14 +30,16 @@ namespace CoreStart.Models
             get
             {
                 //Initializes a culture-invariant DateTimFormatInfo object.
-                DateTimeFormatInfo dtfi = new DateTimeFormatInfo();
-                dtfi.DateSeparator = "-";
-                dtfi.ShortDatePattern = "yyyy-mm-dd";
-                dtfi.TimeSeparator = "-";
-                dtfi.ShortTimePattern = "hh-mm-ss";
-                return Title?.Replace(' ', '-').ToLower() + "-" +
-                       Time?.ToString("d", dtfi) + "-" +
-                       Time?.ToString("t", dtfi);
+                //DateTimeFormatInfo dtfi = new DateTimeFormatInfo();
+                //dtfi.DateSeparator = "-";
+                //dtfi.ShortDatePattern = "yyyy-m-d";
+                //dtfi.TimeSeparator = "-";
+                //dtfi.ShortTimePattern = "hh-mm-ss";
+                //return Title?.Replace(' ', '-').ToLower() + "-" +
+                //       Time?.ToString("d", dtfi);
+                //+ "-" +Time?.ToString("t", dtfi);
+                return Title?.Replace(' ', '-').ToLower() + "-" + Time?.Year +
+                       "-" + Time?.Month.ToString("D2") + "-" + Time?.Day.ToString("D2");
             }
         }
     }
