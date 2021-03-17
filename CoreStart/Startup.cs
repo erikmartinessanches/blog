@@ -78,9 +78,15 @@ namespace CoreStart
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}/{slug?}");
+                //Custom conventional route that always routes to a specific action.
+                endpoints.MapControllerRoute(name: "blogging", pattern: "{action}/{id}/{slug}",
+                    defaults: new { controller = "BlogPost", action = "BlogPost"});
+
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "{controller=Home}/{action=Index}/{id?}/{slug?}");
+                endpoints.MapDefaultControllerRoute();
+
             }); //Executes the endpoint selected by routing.
         }
     }

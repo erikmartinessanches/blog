@@ -11,7 +11,7 @@
         <div class="container p-0">
             <img id="photo" alt="Banner photo" src="~/images/iStock-1281363470.jpg" class="img-fluid rounded" />
             <h1 class="display-4">@ViewBag.Title</h1>
-            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+            <p class="lead">Blogging about interesting stuff.</p>
         </div>
     </div>
 
@@ -30,7 +30,7 @@
             @foreach (var blogpost in Model)
             {
                 <tr>
-                    <td><a asp-controller="BlogPost" asp-action="View" asp-route-id="@blogpost.BlogPostId" asp-route-slug="@blogpost.Slug">@blogpost.Title</a></td>
+                    <td><a asp-controller="BlogPost" asp-action="BlogPost" asp-route-id="@blogpost.BlogPostId" asp-route-slug="@blogpost.Slug">@blogpost.Title</a></td>
                     <td>@blogpost.Author</td>
                     <td>@blogpost.Category.Name</td>
                     <td>@blogpost.Time</td>

@@ -10,7 +10,7 @@
         <div class="container p-0">
             <img id="photo" alt="Banner photo" src="~/images/iStock-1281363470.jpg" class="img-fluid rounded" />
             <h1 class="display-4">@ViewBag.Title</h1>
-            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+            <p class="lead">Blogging about interesting stuff.</p>
         </div>
     </div>
     <form asp-action="Edit" method="post">
@@ -18,7 +18,7 @@
         <div asp-validation-summary="All"></div>
 
         <div class="form-group">
-            <label asp-for="Title">Enter blog post content</label>
+            <label asp-for="Title">Enter blog post title</label>
             <input asp-for="Title" class="form-control" />
         </div>
 

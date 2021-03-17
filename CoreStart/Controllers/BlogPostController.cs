@@ -54,8 +54,6 @@ namespace CoreStart.Controllers
                 ViewBag.Categories = await context.Categories.OrderBy(c => c.Name).ToListAsync();
                 return View(blogpost);
             }
-
-
         }
 
         [HttpGet]
@@ -63,6 +61,7 @@ namespace CoreStart.Controllers
         {
             ViewBag.Action = "Delete";
             var blogpost = await context.BlogPosts.FindAsync(id);
+            blogpost.Category = await context.Categories.FindAsync(blogpost.CategoryId); 
             return View(blogpost);
         }
 
@@ -73,5 +72,14 @@ namespace CoreStart.Controllers
             await context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
         }
+
+        public async Task<IActionResult> BlogPost(int id)
+        {
+            var blogpost = await context.BlogPosts.FindAsync(id);
+            //TODO Find the category of the blogpost with this id.
+            blogpost.Category = await context.Categories.FindAsync(blogpost.CategoryId); 
+            return View(blogpost);
+        }
     }
 }
+;
