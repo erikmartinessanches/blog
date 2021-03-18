@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using CoreStart.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 
 namespace CoreStart.Controllers
@@ -21,7 +23,7 @@ namespace CoreStart.Controllers
         public async Task<IActionResult> Index()
         {
             /**Like the OrderBy() method, the Include() method doesn't execute at the database,
-             * instead it helps build up the query expression that the ToList() method eventually
+             * instead it helps build up the query expression that the ToListAsync() method eventually
              * executes.
              *
              * If we would only need the CategoryId value, not the data for the entire category
@@ -30,7 +32,11 @@ namespace CoreStart.Controllers
              * included when we select a BlogPost. However, here we want to get all the Category
              * data, hence we use the Include() method.
              */
-            var blogposts = await context.BlogPosts.Include(m => m.Category).OrderByDescending(m => m.Time).ToListAsync();
+            var blogposts = await context.BlogPosts
+                .Include(m => m.Category)
+                .Where(m => m.Time < DateTime.Now)
+                .OrderByDescending(m => m.Time)
+                .ToListAsync();
             /*Returns a ViewResult object for the view associated with the action method.
              *ViewResult is a type of IActionResult. */
             return View(blogposts);
