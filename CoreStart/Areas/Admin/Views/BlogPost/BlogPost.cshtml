@@ -1,0 +1,20 @@
+﻿@model BlogPost
+@{
+    string title = ViewBag.Action + " blog post";
+    ViewBag.Title = title;
+}
+
+
+<main class="container-sm">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container p-0">
+            <img id="photo" alt="Banner photo" src="~/images/iStock-1281363470.jpg" class="img-fluid rounded" />
+            <h1 class="display-4">@Model.Title</h1>
+            <p class="lead">Blogging about interesting stuff.</p>
+        </div>
+    </div>
+    <div>@Model.Author</div>
+    <div>@Model.Time</div>
+    <div>@Model.Category.Name</div>
+    <div>@Model.Post</div>
+</main>
