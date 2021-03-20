@@ -1,9 +1,14 @@
-﻿<!doctype html>
+﻿@{
+    string controller = ViewContext.RouteData.Values["controller"].ToString();
+    string action = ViewContext.RouteData.Values["action"].ToString();
+}
+
+<!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>@ViewBag.Title</title>
+    <title>@ViewBag?.Title</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -44,9 +49,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a asp-controller="Home" asp-action="Index" class="nav-link @(controller == "Home" && action == "Index" ? "active" : "")">Home
+                        @{
+                            if (controller == "Home" && action == "Index")
+                            {
+                                <span class="sr-only">(current)</span>
+                            }
+                        }
+                    </a>
                     <a class="nav-link" href="#">About</a>
-
                 </div>
             </div>
         </nav>
