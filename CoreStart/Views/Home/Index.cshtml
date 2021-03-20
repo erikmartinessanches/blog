@@ -14,6 +14,19 @@
             <p class="lead">Blogging about interesting stuff.</p>
         </div>
     </div>
+    
+    @if (ViewBag.Categories is not null)
+    {
+        <text>Categories: </text>
+        foreach (Category c in ViewBag.Categories)
+        {
+            <a asp-controller="Home" asp-action="Index" asp-route-id="@c.Name">@c.Name</a><text>  |  </text>
+        }
+    }
+    <a asp-controller="Home" asp-action="Index" asp-route-id="All">All</a>
+    <hr />
+    <h2>@System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(ViewBag.SelectedCategory) blog posts</h2>
+
     <table class="table table-striped table-bordered table-hover mt-4">
         <thead>
             <tr>
