@@ -40,7 +40,6 @@ namespace CoreStart.Areas.Admin.Controllers
             {
                 blogposts = await context.BlogPosts
                     .Include(m => m.Category)
-                    .Where(m => m.Time < DateTime.Now)
                     .OrderByDescending(m => m.Time)
                     .ToListAsync();
             }
@@ -48,7 +47,6 @@ namespace CoreStart.Areas.Admin.Controllers
             {
                 blogposts = await context.BlogPosts
                     .Include(m => m.Category)
-                    .Where(m => m.Time < DateTime.Now)
                     .Where(m => m.Category.Name == id)
                     .OrderByDescending(m => m.Time)
                     .ToListAsync();
